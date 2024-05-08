@@ -1,0 +1,11 @@
+# Não salva os logins das plataformas
+Configs/logins.yml
+
+# Remove arquivos cache
+__pycache__
+*/__pycache__
+
+# Não salva arquivos no formatos
+*.csv
+*.xlsx
+*.ipynb

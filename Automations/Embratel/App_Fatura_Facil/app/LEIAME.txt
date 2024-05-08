@@ -1,0 +1,82 @@
+               	           E M B R A T E L
+             						  
+             						  NUC Fácil              						  
+                 - seu Detalhamento de Tráfego pela WEB -
+
+Este documento contém algumas dicas para resolução de eventuais problemas e
+outras informações úteis que podem não estar disponíveis em qualquer
+outra área do software ou da documentação. 
+
+Informações gerais 
+
+	O Software foi desenvolvido utilizando uma tecnologia 
+	que dispensa a instalação do programa, sendo o aplicativo executado
+	diretamente da unidade de CD-ROM. Porém, em alguns casos,  torna-se
+	necessário a configuração mínima de sistema.
++--------------------------------------------------------------------------+
++          SEÇÃO 1 - C O N F I G U R A Ç Ã O   M Í N I M A                 +
++--------------------------------------------------------------------------+
+  Micro com Pentium-II ou compatível, de 300 MHz ou superior, 
+  64Mb de memória RAM 
++--------------------------------------------------------------------------+
+ Sistema operacional : Windows 95 & 98, NT 4.0 & 2000, Windows Me
+                       com os Service Packs correspondentes devidamente 
+                       instalados(www.microsoft.com) 
++--------------------------------------------------------------------------+
+ Outras Atualizações : MDAC (Microsoft Data Access Components)  
+                       Microsoft Jet Database Engine
++--------------------------------------------------------------------------+ 
+ Disco rígido : o NUC Fácil precisará de 4 MB, e o 
+                Sistema Operacional utilizará algum para fazer o 
+                processamento e as atualizações, estas, se necessárias.   
++--------------------------------------------------------------------------+
+                Caso sejam necessárias algumas atualizações no 
+                Sistema Operacional ( Updates ) e instalação de Service Pack
+                certifique-se que o seu disco rígido possui algum espaço     
+                antes de continuar com as atualizações.
++--------------------------------------------------------------------------+
++        SEÇÃO 2 - R E S O L U Ç Ã O   D E    P R O B L E M A S            +
++--------------------------------------------------------------------------+
+1. Ao surgirem as mensagens: 
+
+   "NÃO FOI POSSÍVEL REALIZAR A CONEXÃO COM A BASE DE DADOS"
+    no momento da seleção do arquivo OU 
+   "[Microsoft][ODBC Microsoft Access Driver] ERRO NA CLÁUSULA FROM"
+    utilizando alguns dos relatórios,
+
+    faça atualização do Microsoft Data Access Componentes(MDAC) conforme
+    instruções abaixo:
+    
+    ---> Acesse o webSite da Microsoft ( www.microsoft.com.br) vá para downloads.
+         Na combo "Search" escolha "Drivers" e no campo de pesquisa escreva MDAC e clique 
+         no botão GO. Baixe os arquivos e execute conforme a sequência:  
+    
+    1º) MDAC  2.8
+	 endereço sugerido:
+	 http://www.microsoft.com/downloads/details.aspx?FamilyID=6c050fe3-c795-4b7d-b037-185d0506396c&displaylang=en&Hash=AS3dTcZujYrVTIa%2fWYFXV6SxuQyCmEdXFE%2f96UxSxsa06kkevUjvTSI4bAqahTjUIgHJgMUKzGw0y88ubt4ulg%3d%3d        
+    solicitará a reinicialização do micro.  
+    
+	 2º) MDAC 2.8 SP1 - Microsoft Data Access Components ( MDAC ) 2.8 SP1 	// Service Pack
+	 endereço sugerido:    
+    http://www.microsoft.com/downloads/details.aspx?FamilyID=78cac895-efc2-4f8e-a9e0-3a1afbd5922e&DisplayLang=en	 
+    solicitará a reinicialização do micro.  
+ 
+ 	 --- > Acesse o webSite da Microsoft ( www.microsoft.com.br) e na parte de downloads
+         na combo "Search" escolha "All Downloads" e no campo de pesquisa escreva JET 4.0 e clique 
+         no botão GO. 
+ 
+    3º) Jet Database Engine 
+    Jet 4.0 Service Pack 8 (SP8) for Windows 95/98/NT 4.0 (KB829558)    
+	 endereço sugerido:
+	 http://www.microsoft.com/downloads/browse.aspx?displaylang=en&productID=3D99F106-AA6D-4113-AE45-30B61394B1E0
+	 a reinicialização do micro será solicitada.  
+
+    OBSERVAÇÃO: Caso o Sistema Operacional seja Windows NT, Windows NT Workstation 
+                ou Windows 2000 é bom lembrar que para realizar estas atualizações,
+                o usuário logado deverá ser administrador ou membro do grupo 
+                Administradores. Se o computador estiver conectado a uma rede, 
+                comunique ao administrador da mesma para realização 
+                deste procedimento.
++--------------------------------------------------------------------------+
+
+

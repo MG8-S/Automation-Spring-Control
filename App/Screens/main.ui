@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>Nycolas Galdino</author>
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1104</width>
+    <height>682</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>843</width>
+    <height>634</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Rateios - Icatu</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <item>
+       <widget class="QSplitter" name="splitter_3">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="lbl_operadora">
+         <property name="text">
+          <string>Operadora</string>
+         </property>
+        </widget>
+        <widget class="QComboBox" name="cb_operadora"/>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSplitter" name="splitter_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="lbl_conta">
+         <property name="text">
+          <string>Número da Conta</string>
+         </property>
+        </widget>
+        <widget class="QComboBox" name="cb_conta"/>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSplitter" name="splitter_9">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="lbl_tipo">
+         <property name="text">
+          <string>Tipo de conta</string>
+         </property>
+        </widget>
+        <widget class="QComboBox" name="en_tipo">
+         <item>
+          <property name="text">
+           <string>Tel. Fixa</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Tel. 0800</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Tel. SNU</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Dados</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Cloud</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Arbor</string>
+          </property>
+         </item>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLabel" name="lbl_mesref">
+          <property name="text">
+           <string>Mês de referência</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="en_mesref">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QLabel" name="lbl_doc">
+          <property name="text">
+           <string>Número do documento</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="en_num_documento">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QSplitter" name="splitter_8">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="lbl_valor">
+         <property name="text">
+          <string>Valor rateio</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="en_valor">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSplitter" name="splitter">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="lbl_vencimento">
+         <property name="text">
+          <string>Vencimento</string>
+         </property>
+        </widget>
+        <widget class="QDateEdit" name="cb_dt_vencimento">
+         <property name="wrapping">
+          <bool>false</bool>
+         </property>
+         <property name="frame">
+          <bool>true</bool>
+         </property>
+         <property name="minimumDateTime">
+          <datetime>
+           <hour>0</hour>
+           <minute>0</minute>
+           <second>0</second>
+           <year>2024</year>
+           <month>1</month>
+           <day>1</day>
+          </datetime>
+         </property>
+         <property name="maximumDate">
+          <date>
+           <year>2030</year>
+           <month>12</month>
+           <day>31</day>
+          </date>
+         </property>
+         <property name="minimumDate">
+          <date>
+           <year>2024</year>
+           <month>1</month>
+           <day>1</day>
+          </date>
+         </property>
+         <property name="calendarPopup">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSplitter" name="splitter_10">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="lbl_emissao">
+         <property name="text">
+          <string>Emissão</string>
+         </property>
+        </widget>
+        <widget class="QDateEdit" name="cb_dt_emissao">
+         <property name="wrapping">
+          <bool>false</bool>
+         </property>
+         <property name="frame">
+          <bool>true</bool>
+         </property>
+         <property name="minimumDateTime">
+          <datetime>
+           <hour>0</hour>
+           <minute>0</minute>
+           <second>0</second>
+           <year>2024</year>
+           <month>1</month>
+           <day>1</day>
+          </datetime>
+         </property>
+         <property name="maximumDate">
+          <date>
+           <year>2030</year>
+           <month>12</month>
+           <day>31</day>
+          </date>
+         </property>
+         <property name="minimumDate">
+          <date>
+           <year>2024</year>
+           <month>1</month>
+           <day>1</day>
+          </date>
+         </property>
+         <property name="calendarPopup">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSplitter" name="splitter_4">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="lbl_local">
+         <property name="text">
+          <string>Localidade</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="en_local">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSplitter" name="splitter_5">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="lbl_cdc">
+         <property name="text">
+          <string>Centro de Custo</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="en_cdc">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="1">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QPushButton" name="btn_select_file">
+          <property name="text">
+           <string>Selecionar Arquivo</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lbl_file">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Selecione o arquivo a ser anexo...</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QTableWidget" name="tbl_designacoes">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <column>
+         <property name="text">
+          <string>Designação</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Valor</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Centro de Custo</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Localidade</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSplitter" name="frame_direita">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QLabel" name="bl_observacoes">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Observações</string>
+         </property>
+        </widget>
+        <widget class="QTextEdit" name="en_observacoes">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0" colspan="2">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="btn_add_designacao">
+        <property name="text">
+         <string>Adicionar Designação</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_validar_rateio">
+        <property name="text">
+         <string>Validar rateio</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_enviar_rateio">
+        <property name="text">
+         <string>Enviar rateio</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1104</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFun_es">
+    <property name="title">
+     <string>Importar</string>
+    </property>
+    <widget class="QMenu" name="menuEmbratel">
+     <property name="title">
+      <string>Embratel</string>
+     </property>
+     <addaction name="actionImportar_arquivo_CSV"/>
+    </widget>
+    <addaction name="menuEmbratel"/>
+   </widget>
+   <addaction name="menuFun_es"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionImportar_arquivo_CSV">
+   <property name="text">
+    <string>Importar arquivo CSV</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>cb_operadora</tabstop>
+  <tabstop>cb_conta</tabstop>
+  <tabstop>en_tipo</tabstop>
+  <tabstop>en_mesref</tabstop>
+  <tabstop>en_num_documento</tabstop>
+  <tabstop>en_valor</tabstop>
+  <tabstop>cb_dt_vencimento</tabstop>
+  <tabstop>cb_dt_emissao</tabstop>
+  <tabstop>en_local</tabstop>
+  <tabstop>en_cdc</tabstop>
+  <tabstop>btn_select_file</tabstop>
+  <tabstop>tbl_designacoes</tabstop>
+  <tabstop>en_observacoes</tabstop>
+  <tabstop>btn_add_designacao</tabstop>
+  <tabstop>btn_validar_rateio</tabstop>
+  <tabstop>btn_enviar_rateio</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
