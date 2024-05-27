@@ -30,4 +30,4 @@ def __import_sys_path__(path_name: str, relative_path: str = None):
     sys.path.append(path)
 
 
-__import_sys_path__('Automacao Spring Control')
+main_path = __import_sys_path__('Automacao Spring Control')

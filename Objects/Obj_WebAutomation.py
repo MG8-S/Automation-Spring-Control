@@ -1,18 +1,20 @@
 import os
 from time import sleep, time
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.remote.webelement import WebElement
-from selenium.webdriver import Chrome, ChromeOptions
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import (JavascriptException,
-                                        SessionNotCreatedException,
-                                        ElementNotVisibleException,
-                                        ElementNotSelectableException,
+
+from selenium.common.exceptions import (ElementClickInterceptedException,
                                         ElementNotInteractableException,
-                                        ElementClickInterceptedException)
+                                        ElementNotSelectableException,
+                                        ElementNotVisibleException,
+                                        JavascriptException)
+from selenium.webdriver import Chrome, ChromeOptions
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.print_page_options import PrintOptions
+from selenium.webdriver.remote.webdriver import WebDriver
+from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
+from webdriver_manager.chrome import ChromeDriverManager
 
 xpath = By.XPATH
 id_selector = By.ID
@@ -21,8 +23,10 @@ tag_selector = By.TAG_NAME
 css_selector = By.CSS_SELECTOR
 class_selector = By.CLASS_NAME
 
+
 class FolderNotExistsError(Exception):
     pass
+
 
 class Driver:
     """Classe criada para automatizar o download das faturas web"""
@@ -50,10 +54,11 @@ class Driver:
         self.__operadora__ = operadora
         self.__cliente__ = cliente
         self.__client_folder__ = client_folder
-        
+
         if download_folder:
             if not os.path.exists(download_folder):
-                raise FolderNotExistsError(f"O diretório {download_folder} não existe")
+                raise FolderNotExistsError(
+                    f"O diretório {download_folder} não existe")
 
             # O selenium exige que a pasta de download tenha uma barra invertida
             # no final do caminho, e que as barras sejam invertidas, assim evitará
@@ -83,13 +88,16 @@ class Driver:
         webdriver_options.add_argument("--disable-extensions")
         webdriver_options.add_argument('--ignore-certificate-errors')
 
-
         prefs_args = {
             "safebrowsing.enabled": False,
             "download.prompt_for_download": False,
-            "profile.default_content_setting_values.automatic_downloads": 1
-            }
-        
+            "profile.default_content_setting_values.automatic_downloads": 1,
+            "plugins.plugins_list": [{
+                "enabled": False,
+                "name": "Chrome PDF Viewer"}],
+            "download.extensions_to_open": "applications/pdf"
+        }
+
         if self.__download_folder__:
             prefs_args['download.default_directory'] = self.__download_folder__
 
@@ -118,7 +126,7 @@ class Driver:
 
         return webdriver_options
 
-    def new_driver(self, no_window: bool = False, safe_sites: list = []):
+    def new_driver(self, no_window: bool = False, safe_sites: list = []) -> WebDriver:
         """
         Creates a new WebDriver instance and returns it.
 
@@ -140,7 +148,7 @@ class Driver:
                                                    safe_sites=safe_sites))
 
     def find_by_element(self,
-                        driver: Chrome,
+                        driver: WebDriver,
                         element: str,
                         selector: str = xpath,
                         wait: float = None,
@@ -183,9 +191,12 @@ class Driver:
         except Exception as e:
             raise e
 
-
-    def click_by_element(self, driver, x_path: str, selector = xpath,
-                         wait=None, use_js: bool = True):
+    def click_by_element(self,
+                         driver: WebDriver,
+                         x_path: str,
+                         selector: str = xpath,
+                         wait=None,
+                         use_js: bool = True) -> WebElement:
         """
         Clicks on an element identified by its XPath using Selenium WebDriver.
 
@@ -202,7 +213,7 @@ class Driver:
         Raises:
             Exception: If an error occurs while clicking the element.
         """
-        
+
         try:
             if wait:
                 elem = WebDriverWait(driver, wait).until(
@@ -220,21 +231,21 @@ class Driver:
         except Exception as e:
             raise e
 
-    def getDownLoadedFileName(self, driver, waitTime=500):
+    def getDownLoadedFileName(self, driver: WebDriver, waitTime=500):
         """
         A function to get the name of the downloaded file after a download operation.
-        
+
         Args:
             driver: The WebDriver object.
             waitTime: Maximum time to wait for the download to complete (default is 500 seconds).
-            
+
         Returns:
             The name of the downloaded file.
-            
+
         Raises:
             Exception: If an error occurs during the process of getting the downloaded file name.
         """
-        
+
         driver.execute_script("window.open()")
         driver.switch_to.window(driver.window_handles[-1])
         driver.get('chrome://downloads')
@@ -276,3 +287,31 @@ class Driver:
 
             except JavascriptException:
                 raise Exception("Não foi possível fazer o download do arquivo")
+
+    def save_page_as_pdf(self, driver: WebDriver, **kwargs):
+        """
+        A function to save the current page as a PDF file.
+
+        Args:
+            driver: The WebDriver object.
+            **kwargs: Additional keyword arguments.
+
+        Formats:
+            margin: _MarginOpts
+            page: _PageOpts
+            background: bool
+            orientation: Orientation
+            scale: float
+            shrinkToFit: bool
+            pageRanges: List[str]
+
+        Raises:
+            Exception: If an error occurs during the process of saving the page as a PDF file.
+        """
+
+        print_opt = PrintOptions()
+
+        for key, value in kwargs.items():
+            setattr(print_opt, key, value)
+
+        driver.print_page(print_opt)

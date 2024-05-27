@@ -17,7 +17,7 @@ except ModuleNotFoundError as mnfe:
 
 # Main function execution starts here
 if __name__ == "__main__":
-    today = (dt(2024, 4, 1))
+    today = (dt(2024, 6, 1))
     # today = (dt.now())
     mesref = today.strftime('%Y-%m')
     oi_path = os.path.join(os.environ['OneDrive'],

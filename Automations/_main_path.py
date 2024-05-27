@@ -26,6 +26,7 @@ def __found_before_path__(path_name: str, relative_path: str = None):
 def __import_sys_path__(path_name: str, relative_path: str = None):
     path = __found_before_path__(path_name, relative_path)
     sys.path.append(path)
+    return path
 
 
 __import_sys_path__('Automacao Spring Control')
