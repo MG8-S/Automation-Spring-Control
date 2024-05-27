@@ -1,13 +1,11 @@
 import os
-import sys
 from datetime import datetime as dt
 from datetime import timedelta as td
 
 # Import automation and reader modules
 try:
     from Automations.Download_Invoices_Spring_Control import Download_Invoices
-    from Automations.Embratel.App_Fatura_Facil.Fat_Converter import \
-        Read_fats  # noqa
+    from Automations.Embratel.App_Fatura_Facil.Fat_Converter import Read_fats  # noqa
     from Automations.Embratel.App_Fatura_Facil.main import Download_Fat_Ebt
     from Readers.Embratel.Leitor_Fat import Process_Fat_Ebt
 except ModuleNotFoundError as mnfe:
@@ -27,7 +25,8 @@ if __name__ == "__main__":
     # meses += list(dt(2024, x, 1) for x in range(1,6))
     meses.append(dt.now())
 
-    # # If the current day is the 20th or later, add next month to the list as well
+    # If the current day is the 20th or later,
+    # add next month to the list as well
     if dt.now().day >= 20:
         meses.append(dt.now() + td(weeks=2))
 
