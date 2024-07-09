@@ -37,6 +37,7 @@ def get_sended_invoices():
 
     return [x[0] for x in faturas_enviadas]
 
+
 def create
 
 
@@ -115,7 +116,7 @@ def send_invoice_email(temp_df, filename):
     with TemporaryDirectory() as temp_dir:
         with pd.ExcelWriter(join(temp_dir, 'rateio.xlsx')) as writer:
             styled_df.to_excel(writer, sheet_name=num_fatura)
-        
+
         plt.style.use("seaborn-v0_8-dark")
 
         plt.

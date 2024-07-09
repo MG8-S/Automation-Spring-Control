@@ -5,24 +5,52 @@ from datetime import timedelta as td
 # Import automation and reader modules
 try:
     from Automations.Download_Invoices_Spring_Control import Download_Invoices
-    from Automations.Embratel.App_Fatura_Facil.Fat_Converter import Read_fats  # noqa
-    from Automations.Embratel.App_Fatura_Facil.main import Download_Fat_Ebt
-    from Readers.Embratel.Leitor_Fat import Process_Fat_Ebt
+    from Embratel_Process import Ebt_Process
+    from Oi_Process import Oi_Process
+
 except ModuleNotFoundError as mnfe:
-    # Attempt to install missing modules using pip
-    os.system(f'pip install {mnfe.name}')
+    print(f'\nMODULE: "{mnfe.name}"')
+    match mnfe.name:
+        case 'fitz':
+            # Attempt to install missing modules using pip
+            print('Installing missing module fitz / pymupdf...')
+            os.system('pip install pymupdf')
+        case other:
+            # Attempt to install missing modules using pip
+            print(f'Installing missing module {mnfe.name}...')
+            os.system(f'pip install {mnfe.name}')
+
     os.system(f'python "{__file__}"')
     quit()
+
+
+def main(mes: dt):
+    print(f'Processando: {mes.strftime("%Y-%m")}')
+
+    # Download invoices for the given month
+    print('Fazendo download dos boletos no SC...')
+    Download_Invoices(mes)
+
+    # Faz download dos detalhamentos e processa os boletos da Embratel
+    print('\n\nFazendo download dos detalhamentos da Embratel...')
+    Ebt_Process(mes)
+
+    # Faz download dos detalhamentos e processa os boletos da Oi
+    print('\n\nFazendo download dos detalhamentos da Oi...')
+    Oi_Process(mes)
+
 
 # Main function execution starts here
 if __name__ == "__main__":
     os.chdir(os.path.dirname(__file__))
 
     # Initialize list of months to process
-    meses = []
+    meses: list[dt] = []
 
     # Add current month to the list
-    # meses += list(dt(2024, x, 1) for x in range(1,6))
+    # init = 1
+    # end = 2
+    # meses += list(dt(2024, x, 1) for x in range(init, end))
     meses.append(dt.now())
 
     # If the current day is the 20th or later,
@@ -32,22 +60,4 @@ if __name__ == "__main__":
 
     # Process each months
     for mes in meses:
-        # Download invoices for the given month
-        Download_Invoices(mes)
-
-        # Process detailed billing report for Embratel
-        try:
-            app_path = os.path.join(
-                os.path.dirname(__file__),
-                'Automations/Embratel/App_Fatura_Facil/app'
-            )
-            for file in os.listdir(app_path):
-                if file.endswith('.TXT'):
-                    os.remove(os.path.join(app_path, file))
-
-            Download_Fat_Ebt(mes)
-            Read_fats(mes)
-        except Exception as e:
-            print(e)
-
-    # Process_Fat_Ebt()
+        main(mes)

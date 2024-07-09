@@ -16,7 +16,7 @@ fastparquet.__loader__
 def read_log(path: str,
              file: str,
              engine: str = 'fastparquet') -> pd.DataFrame:
-    path_file = join(path, file+'.parquet')
+    path_file = join(path, file + '.parquet')
 
     try:
         return pd.read_parquet(path_file, engine=engine)
@@ -33,7 +33,7 @@ def write_log(path: str,
               engine: str = 'fastparquet'):
 
     def file_base(formato):
-        return join(path, file+'.'+formato)  # type: ignore
+        return join(path, file + '.' + formato)  # type: ignore
 
     df.to_parquet(file_base('parquet'), engine=engine)
     df.to_csv(file_base('csv'), sep=';')

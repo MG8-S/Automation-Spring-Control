@@ -1,22 +1,23 @@
 # -*- coding: utf-8 -*-
 
-################################################################################
-## Form generated from reading UI file 'add_desig.ui'
+##########################################################################
+# Form generated from reading UI file 'add_desig.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.7.0
+# Created by: Qt User Interface Compiler version 6.7.0
 ##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
+# WARNING! All changes made in this file will be lost when recompiling UI file!
+##########################################################################
 
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
+                            QMetaObject, QObject, QPoint, QRect,
+                            QSize, QTime, QUrl, Qt)
 from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
+                           QFont, QFontDatabase, QGradient, QIcon,
+                           QImage, QKeySequence, QLinearGradient, QPainter,
+                           QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QLabel, QLineEdit, QPushButton,
-    QSizePolicy, QVBoxLayout, QWidget)
+                               QSizePolicy, QVBoxLayout, QWidget)
+
 
 class Ui_Desig(QWidget):
     def setupUi(self, UiDesig):
@@ -37,7 +38,6 @@ class Ui_Desig(QWidget):
 
         self.verticalLayout.addWidget(self.en_desig)
 
-
         self.verticalLayout_5.addLayout(self.verticalLayout)
 
         self.verticalLayout_2 = QVBoxLayout()
@@ -51,7 +51,6 @@ class Ui_Desig(QWidget):
         self.en_valor.setObjectName(u"en_valor")
 
         self.verticalLayout_2.addWidget(self.en_valor)
-
 
         self.verticalLayout_5.addLayout(self.verticalLayout_2)
 
@@ -67,7 +66,6 @@ class Ui_Desig(QWidget):
 
         self.verticalLayout_3.addWidget(self.en_cdc)
 
-
         self.verticalLayout_5.addLayout(self.verticalLayout_3)
 
         self.verticalLayout_4 = QVBoxLayout()
@@ -82,7 +80,6 @@ class Ui_Desig(QWidget):
 
         self.verticalLayout_4.addWidget(self.en_localidade)
 
-
         self.verticalLayout_5.addLayout(self.verticalLayout_4)
 
         self.btn_enviar_desig = QPushButton(UiDesig)
@@ -90,18 +87,31 @@ class Ui_Desig(QWidget):
 
         self.verticalLayout_5.addWidget(self.btn_enviar_desig)
 
-
         self.retranslateUi(UiDesig)
 
         QMetaObject.connectSlotsByName(UiDesig)
     # setupUi
 
     def retranslateUi(self, UiDesig):
-        UiDesig.setWindowTitle(QCoreApplication.translate("UiDesig", u"Adicionar designa\u00e7\u00e3o", None))
-        self.lbl_desig.setText(QCoreApplication.translate("UiDesig", u"Designa\u00e7\u00e3o", None))
-        self.lbl_valor.setText(QCoreApplication.translate("UiDesig", u"Valor Designacao", None))
-        self.lbl_cdc.setText(QCoreApplication.translate("UiDesig", u"CDC", None))
-        self.lbl_localidade.setText(QCoreApplication.translate("UiDesig", u"Localidade", None))
-        self.btn_enviar_desig.setText(QCoreApplication.translate("UiDesig", u"Adicionar Designa\u00e7\u00e3o", None))
+        UiDesig.setWindowTitle(
+            QCoreApplication.translate(
+                "UiDesig",
+                u"Adicionar designa\u00e7\u00e3o",
+                None))
+        self.lbl_desig.setText(
+            QCoreApplication.translate(
+                "UiDesig",
+                u"Designa\u00e7\u00e3o",
+                None))
+        self.lbl_valor.setText(
+            QCoreApplication.translate(
+                "UiDesig", u"Valor Designacao", None))
+        self.lbl_cdc.setText(
+            QCoreApplication.translate(
+                "UiDesig", u"CDC", None))
+        self.lbl_localidade.setText(
+            QCoreApplication.translate(
+                "UiDesig", u"Localidade", None))
+        self.btn_enviar_desig.setText(QCoreApplication.translate(
+            "UiDesig", u"Adicionar Designa\u00e7\u00e3o", None))
     # retranslateUi
-

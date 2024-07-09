@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-################################################################################
-## Form generated from reading UI file 'main.ui'
+##########################################################################
+# Form generated from reading UI file 'main.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.7.0
+# Created by: Qt User Interface Compiler version 6.7.0
 ##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
+# WARNING! All changes made in this file will be lost when recompiling UI file!
+##########################################################################
 
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
                             QMetaObject, QObject, QPoint, QRect, QSize, Qt,
@@ -30,7 +30,8 @@ class Ui_MainWindow(QMainWindow):
         MainWindow.resize(1104, 682)
         MainWindow.setMinimumSize(QSize(843, 634))
         self.actionImportar_arquivo_CSV = QAction(MainWindow)
-        self.actionImportar_arquivo_CSV.setObjectName(u"actionImportar_arquivo_CSV")
+        self.actionImportar_arquivo_CSV.setObjectName(
+            u"actionImportar_arquivo_CSV")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
@@ -92,7 +93,6 @@ class Ui_MainWindow(QMainWindow):
 
         self.verticalLayout_2.addWidget(self.en_mesref)
 
-
         self.verticalLayout_4.addLayout(self.verticalLayout_2)
 
         self.verticalLayout_3 = QVBoxLayout()
@@ -107,7 +107,6 @@ class Ui_MainWindow(QMainWindow):
         self.en_num_documento.setEnabled(True)
 
         self.verticalLayout_3.addWidget(self.en_num_documento)
-
 
         self.verticalLayout_4.addLayout(self.verticalLayout_3)
 
@@ -134,7 +133,8 @@ class Ui_MainWindow(QMainWindow):
         self.cb_dt_vencimento.setObjectName(u"cb_dt_vencimento")
         self.cb_dt_vencimento.setWrapping(False)
         self.cb_dt_vencimento.setFrame(True)
-        self.cb_dt_vencimento.setMinimumDateTime(QDateTime(QDate(2024, 1, 1), QTime(0, 0, 0)))
+        self.cb_dt_vencimento.setMinimumDateTime(
+            QDateTime(QDate(2024, 1, 1), QTime(0, 0, 0)))
         self.cb_dt_vencimento.setMaximumDate(QDate(2030, 12, 31))
         self.cb_dt_vencimento.setMinimumDate(QDate(2024, 1, 1))
         self.cb_dt_vencimento.setCalendarPopup(True)
@@ -152,7 +152,11 @@ class Ui_MainWindow(QMainWindow):
         self.cb_dt_emissao.setObjectName(u"cb_dt_emissao")
         self.cb_dt_emissao.setWrapping(False)
         self.cb_dt_emissao.setFrame(True)
-        self.cb_dt_emissao.setMinimumDateTime(QDateTime(QDate(2024, 1, 1), QTime(0, 0, 0)))
+        self.cb_dt_emissao.setMinimumDateTime(
+            QDateTime(
+                QDate(
+                    2024, 1, 1), QTime(
+                    0, 0, 0)))
         self.cb_dt_emissao.setMaximumDate(QDate(2030, 12, 31))
         self.cb_dt_emissao.setMinimumDate(QDate(2024, 1, 1))
         self.cb_dt_emissao.setCalendarPopup(True)
@@ -186,7 +190,6 @@ class Ui_MainWindow(QMainWindow):
 
         self.verticalLayout_4.addWidget(self.splitter_5)
 
-
         self.gridLayout.addLayout(self.verticalLayout_4, 0, 0, 1, 1)
 
         self.verticalLayout = QVBoxLayout()
@@ -200,14 +203,16 @@ class Ui_MainWindow(QMainWindow):
 
         self.lbl_file = QLabel(self.centralwidget)
         self.lbl_file.setObjectName(u"lbl_file")
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
+        sizePolicy = QSizePolicy(
+            QSizePolicy.Policy.Expanding,
+            QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.lbl_file.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.lbl_file.sizePolicy().hasHeightForWidth())
         self.lbl_file.setSizePolicy(sizePolicy)
 
         self.horizontalLayout_2.addWidget(self.lbl_file)
-
 
         self.verticalLayout.addLayout(self.horizontalLayout_2)
 
@@ -223,10 +228,13 @@ class Ui_MainWindow(QMainWindow):
         __qtablewidgetitem3 = QTableWidgetItem()
         self.tbl_designacoes.setHorizontalHeaderItem(3, __qtablewidgetitem3)
         self.tbl_designacoes.setObjectName(u"tbl_designacoes")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        sizePolicy1 = QSizePolicy(
+            QSizePolicy.Policy.Expanding,
+            QSizePolicy.Policy.Expanding)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.tbl_designacoes.sizePolicy().hasHeightForWidth())
+        sizePolicy1.setHeightForWidth(
+            self.tbl_designacoes.sizePolicy().hasHeightForWidth())
         self.tbl_designacoes.setSizePolicy(sizePolicy1)
 
         self.verticalLayout.addWidget(self.tbl_designacoes)
@@ -236,23 +244,28 @@ class Ui_MainWindow(QMainWindow):
         self.frame_direita.setOrientation(Qt.Vertical)
         self.bl_observacoes = QLabel(self.frame_direita)
         self.bl_observacoes.setObjectName(u"bl_observacoes")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
+        sizePolicy2 = QSizePolicy(
+            QSizePolicy.Policy.Preferred,
+            QSizePolicy.Policy.Preferred)
         sizePolicy2.setHorizontalStretch(0)
         sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.bl_observacoes.sizePolicy().hasHeightForWidth())
+        sizePolicy2.setHeightForWidth(
+            self.bl_observacoes.sizePolicy().hasHeightForWidth())
         self.bl_observacoes.setSizePolicy(sizePolicy2)
         self.frame_direita.addWidget(self.bl_observacoes)
         self.en_observacoes = QTextEdit(self.frame_direita)
         self.en_observacoes.setObjectName(u"en_observacoes")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.MinimumExpanding)
+        sizePolicy3 = QSizePolicy(
+            QSizePolicy.Policy.MinimumExpanding,
+            QSizePolicy.Policy.MinimumExpanding)
         sizePolicy3.setHorizontalStretch(0)
         sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.en_observacoes.sizePolicy().hasHeightForWidth())
+        sizePolicy3.setHeightForWidth(
+            self.en_observacoes.sizePolicy().hasHeightForWidth())
         self.en_observacoes.setSizePolicy(sizePolicy3)
         self.frame_direita.addWidget(self.en_observacoes)
 
         self.verticalLayout.addWidget(self.frame_direita)
-
 
         self.gridLayout.addLayout(self.verticalLayout, 0, 1, 1, 1)
 
@@ -272,7 +285,6 @@ class Ui_MainWindow(QMainWindow):
         self.btn_enviar_rateio.setObjectName(u"btn_enviar_rateio")
 
         self.horizontalLayout.addWidget(self.btn_enviar_rateio)
-
 
         self.gridLayout.addLayout(self.horizontalLayout, 1, 0, 1, 2)
 
@@ -314,40 +326,114 @@ class Ui_MainWindow(QMainWindow):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Rateios - Icatu", None))
-        self.actionImportar_arquivo_CSV.setText(QCoreApplication.translate("MainWindow", u"Importar arquivo CSV", None))
-        self.lbl_operadora.setText(QCoreApplication.translate("MainWindow", u"Operadora", None))
-        self.lbl_conta.setText(QCoreApplication.translate("MainWindow", u"N\u00famero da Conta", None))
-        self.lbl_tipo.setText(QCoreApplication.translate("MainWindow", u"Tipo de conta", None))
-        self.en_tipo.setItemText(0, QCoreApplication.translate("MainWindow", u"Tel. Fixa", None))
-        self.en_tipo.setItemText(1, QCoreApplication.translate("MainWindow", u"Tel. 0800", None))
-        self.en_tipo.setItemText(2, QCoreApplication.translate("MainWindow", u"Tel. SNU", None))
-        self.en_tipo.setItemText(3, QCoreApplication.translate("MainWindow", u"Dados", None))
-        self.en_tipo.setItemText(4, QCoreApplication.translate("MainWindow", u"Cloud", None))
-        self.en_tipo.setItemText(5, QCoreApplication.translate("MainWindow", u"Arbor", None))
+        MainWindow.setWindowTitle(
+            QCoreApplication.translate(
+                "MainWindow", u"Rateios - Icatu", None))
+        self.actionImportar_arquivo_CSV.setText(
+            QCoreApplication.translate(
+                "MainWindow", u"Importar arquivo CSV", None))
+        self.lbl_operadora.setText(
+            QCoreApplication.translate(
+                "MainWindow", u"Operadora", None))
+        self.lbl_conta.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                u"N\u00famero da Conta",
+                None))
+        self.lbl_tipo.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                u"Tipo de conta",
+                None))
+        self.en_tipo.setItemText(
+            0, QCoreApplication.translate(
+                "MainWindow", u"Tel. Fixa", None))
+        self.en_tipo.setItemText(
+            1, QCoreApplication.translate(
+                "MainWindow", u"Tel. 0800", None))
+        self.en_tipo.setItemText(
+            2, QCoreApplication.translate(
+                "MainWindow", u"Tel. SNU", None))
+        self.en_tipo.setItemText(
+            3, QCoreApplication.translate(
+                "MainWindow", u"Dados", None))
+        self.en_tipo.setItemText(
+            4, QCoreApplication.translate(
+                "MainWindow", u"Cloud", None))
+        self.en_tipo.setItemText(
+            5, QCoreApplication.translate(
+                "MainWindow", u"Arbor", None))
 
-        self.lbl_mesref.setText(QCoreApplication.translate("MainWindow", u"M\u00eas de refer\u00eancia", None))
-        self.lbl_doc.setText(QCoreApplication.translate("MainWindow", u"N\u00famero do documento", None))
-        self.lbl_valor.setText(QCoreApplication.translate("MainWindow", u"Valor rateio", None))
-        self.lbl_vencimento.setText(QCoreApplication.translate("MainWindow", u"Vencimento", None))
-        self.lbl_emissao.setText(QCoreApplication.translate("MainWindow", u"Emiss\u00e3o", None))
-        self.lbl_local.setText(QCoreApplication.translate("MainWindow", u"Localidade", None))
-        self.lbl_cdc.setText(QCoreApplication.translate("MainWindow", u"Centro de Custo", None))
-        self.btn_select_file.setText(QCoreApplication.translate("MainWindow", u"Selecionar Arquivo", None))
-        self.lbl_file.setText(QCoreApplication.translate("MainWindow", u"Selecione o arquivo a ser anexo...", None))
+        self.lbl_mesref.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                u"M\u00eas de refer\u00eancia",
+                None))
+        self.lbl_doc.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                u"N\u00famero do documento",
+                None))
+        self.lbl_valor.setText(
+            QCoreApplication.translate(
+                "MainWindow", u"Valor rateio", None))
+        self.lbl_vencimento.setText(
+            QCoreApplication.translate(
+                "MainWindow", u"Vencimento", None))
+        self.lbl_emissao.setText(
+            QCoreApplication.translate(
+                "MainWindow", u"Emiss\u00e3o", None))
+        self.lbl_local.setText(
+            QCoreApplication.translate(
+                "MainWindow", u"Localidade", None))
+        self.lbl_cdc.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                u"Centro de Custo",
+                None))
+        self.btn_select_file.setText(
+            QCoreApplication.translate(
+                "MainWindow", u"Selecionar Arquivo", None))
+        self.lbl_file.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                u"Selecione o arquivo a ser anexo...",
+                None))
         ___qtablewidgetitem = self.tbl_designacoes.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Designa\u00e7\u00e3o", None));
+        ___qtablewidgetitem.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                u"Designa\u00e7\u00e3o",
+                None))
         ___qtablewidgetitem1 = self.tbl_designacoes.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Valor", None));
+        ___qtablewidgetitem1.setText(
+            QCoreApplication.translate(
+                "MainWindow", u"Valor", None))
         ___qtablewidgetitem2 = self.tbl_designacoes.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Centro de Custo", None));
+        ___qtablewidgetitem2.setText(
+            QCoreApplication.translate(
+                "MainWindow", u"Centro de Custo", None))
         ___qtablewidgetitem3 = self.tbl_designacoes.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Localidade", None));
-        self.bl_observacoes.setText(QCoreApplication.translate("MainWindow", u"Observa\u00e7\u00f5es", None))
-        self.btn_add_designacao.setText(QCoreApplication.translate("MainWindow", u"Adicionar Designa\u00e7\u00e3o", None))
-        self.btn_validar_rateio.setText(QCoreApplication.translate("MainWindow", u"Validar rateio", None))
-        self.btn_enviar_rateio.setText(QCoreApplication.translate("MainWindow", u"Enviar rateio", None))
-        self.menuFun_es.setTitle(QCoreApplication.translate("MainWindow", u"Importar", None))
-        self.menuEmbratel.setTitle(QCoreApplication.translate("MainWindow", u"Embratel", None))
+        ___qtablewidgetitem3.setText(
+            QCoreApplication.translate(
+                "MainWindow", u"Localidade", None))
+        self.bl_observacoes.setText(
+            QCoreApplication.translate(
+                "MainWindow",
+                u"Observa\u00e7\u00f5es",
+                None))
+        self.btn_add_designacao.setText(QCoreApplication.translate(
+            "MainWindow", u"Adicionar Designa\u00e7\u00e3o", None))
+        self.btn_validar_rateio.setText(
+            QCoreApplication.translate(
+                "MainWindow", u"Validar rateio", None))
+        self.btn_enviar_rateio.setText(
+            QCoreApplication.translate(
+                "MainWindow", u"Enviar rateio", None))
+        self.menuFun_es.setTitle(
+            QCoreApplication.translate(
+                "MainWindow", u"Importar", None))
+        self.menuEmbratel.setTitle(
+            QCoreApplication.translate(
+                "MainWindow", u"Embratel", None))
     # retranslateUi
-

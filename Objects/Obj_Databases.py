@@ -73,7 +73,7 @@ class ControlDatabases:
         """
         con = self.connect()
         if return_df:
-            df = pd.read_sql(command, con,**kwargs)
+            df = pd.read_sql(command, con, **kwargs)
             return df
         else:
             cur = con.cursor()

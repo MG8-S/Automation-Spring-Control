@@ -136,10 +136,10 @@ def convert_files(path: str,
     df_outros.insert(3, 'DESTINO', '')
 
     df_chamada.insert(2, 'QUANTIDADE/MINUTOS',
-                      pd.to_numeric(df_chamada['LINHA'].str[145:157])/1000)
+                      pd.to_numeric(df_chamada['LINHA'].str[145:157]) / 1000)
 
     df_outros.insert(2, 'QUANTIDADE/MINUTOS',
-                     pd.to_numeric(df_outros['LINHA'].str[145:157])/1000)
+                     pd.to_numeric(df_outros['LINHA'].str[145:157]) / 1000)
 
     df_chamada.insert(1, 'UNIDADE', (df_chamada['LINHA'].str[157:163]
                                      .str.strip()))
@@ -149,11 +149,11 @@ def convert_files(path: str,
 
     df_chamada.insert(2, 'VALOR',
                       (pd.to_numeric(df_chamada['LINHA'].str[1:2] +
-                                     df_chamada['LINHA'].str[163:174])/100))
+                                     df_chamada['LINHA'].str[163:174]) / 100))
 
     df_outros.insert(2, 'VALOR',
                      (pd.to_numeric(df_outros['LINHA'].str[1:2] +
-                                    df_outros['LINHA'].str[163:174])/100))
+                                    df_outros['LINHA'].str[163:174]) / 100))
 
     df_chamada.insert(1, 'COD_ORIGEM', (df_chamada['LINHA'].str[177:184]
                                         .str.strip()))

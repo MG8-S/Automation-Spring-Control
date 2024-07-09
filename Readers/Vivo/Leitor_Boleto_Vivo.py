@@ -19,22 +19,22 @@ def __get_info_fixo__(invoice: Invoice, page: str):
 
         if not invoice.designacao:
             if "TELEFONE(S)" in line:
-                invoice.designacao = lines[i+1]
+                invoice.designacao = lines[i + 1]
 
         if not invoice.valor:
             if "Valor a pagar" in line:
-                invoice.valor = lines[i+1]
+                invoice.valor = lines[i + 1]
 
         if not invoice.conta:
             if "Código do cliente" in line:
-                invoice.conta = lines[i+1]
+                invoice.conta = lines[i + 1]
                 invoice.conta = invoice.conta.replace(' DV: ', '-')
                 while ' -' in invoice.conta:
                     invoice.conta = invoice.conta.replace(' -', '-')
 
         if not invoice.fatura:
             if "Número da fatura" in line:
-                invoice.fatura = lines[i+1]
+                invoice.fatura = lines[i + 1]
 
         # if not invoice.servicos:
             # if "" in line:
@@ -42,11 +42,11 @@ def __get_info_fixo__(invoice: Invoice, page: str):
 
         if not invoice.cnpj:
             if "CNPJ / CPF" in line:
-                invoice.cnpj = lines[i+1]
+                invoice.cnpj = lines[i + 1]
 
         if not invoice.emissao:
             if "Data de emissão" in line:
-                invoice.emissao = lines[i+1]
+                invoice.emissao = lines[i + 1]
 
         if not invoice.vencimento:
             if "Data de vencimento " in line or 'Vencimento: ' in line:
@@ -54,7 +54,7 @@ def __get_info_fixo__(invoice: Invoice, page: str):
 
         if not invoice.mesref:
             if "Mês de referência" in line:
-                invoice.mesref = lines[i+1]
+                invoice.mesref = lines[i + 1]
 
 
 def __get_info_movel__(invoice: Invoice, page: str):
@@ -64,15 +64,15 @@ def __get_info_movel__(invoice: Invoice, page: str):
 
         if not invoice.valor:  # ok
             if "Total a Pagar - R$" in line:
-                invoice.valor = lines[i+2]
+                invoice.valor = lines[i + 2]
 
         if not invoice.conta:  # ok
             if "Nº da Conta" in line:
-                invoice.conta = lines[i+1]
+                invoice.conta = lines[i + 1]
 
         if not invoice.fatura:  # ok
             if "Cód. Débito Automático" in line:
-                invoice.fatura = lines[i+1]
+                invoice.fatura = lines[i + 1]
 
         # if not invoice.servicos:
             # if "" in line:
@@ -84,16 +84,17 @@ def __get_info_movel__(invoice: Invoice, page: str):
 
         if not invoice.vencimento:  # ok
             if "Vencimento" in line:
-                invoice.vencimento = lines[i+2]
+                invoice.vencimento = lines[i + 2]
 
         if not invoice.mesref:  # ok
             if "Mês Referência" in line:
-                invoice.mesref = lines[i+1]
+                invoice.mesref = lines[i + 1]
                 invoice.mesref = dt.strptime(invoice.mesref, '%m/%Y')
                 invoice.mesref = invoice.mesref.strftime("%B/%Y").capitalize()
 
 
 _main_path.__loader__
+# mesref = '2024-06'
 mesref = dt.now().strftime('%Y-%m')
 
 invoices_path = join(
@@ -106,12 +107,11 @@ files = os.listdir(invoices_path)
 
 main_df = pd.DataFrame()
 
-for f in files[-1:]:
+for f in files:
     print(f"Lendo o arquivo {f}...")
     obj_pdf = PDFReader(f, invoices_path)
     invoice = Invoice()
 
-    # engine = "PyPDF2"  # PyPDF2 | fitz
     engine = "fitz"  # PyPDF2 | fitz
     pdf = obj_pdf.read_pdf(engine)
 

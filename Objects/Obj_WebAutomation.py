@@ -68,7 +68,8 @@ class Driver:
                 download_folder += '\\'
             self.__download_folder__ = download_folder
 
-    def __options__(self, no_window: bool = False, arguments: list = [], safe_sites: list = []):
+    def __options__(self, no_window: bool = False,
+                    arguments: list = [], safe_sites: list = []):
         """
         Returns a ChromeOptions object with the specified options.
 
@@ -126,7 +127,8 @@ class Driver:
 
         return webdriver_options
 
-    def new_driver(self, no_window: bool = False, safe_sites: list = []) -> WebDriver:
+    def new_driver(self, no_window: bool = False,
+                   safe_sites: list = []) -> WebDriver:
         """
         Creates a new WebDriver instance and returns it.
 
@@ -250,7 +252,7 @@ class Driver:
         driver.switch_to.window(driver.window_handles[-1])
         driver.get('chrome://downloads')
 
-        endTime = time()+waitTime
+        endTime = time() + waitTime
         while True:
             sleep(1)
             try:

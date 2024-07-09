@@ -14,7 +14,8 @@ _main_path.__loader__
 locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 
 
-def __read_format_1__(pdf_object: PDFReader, page_text: str, invoice: Invoice) -> bool:
+def __read_format_1__(pdf_object: PDFReader, page_text: str,
+                      invoice: Invoice) -> bool:
     """
     This function is used to extract information from a PDF file.
 
@@ -34,7 +35,7 @@ def __read_format_1__(pdf_object: PDFReader, page_text: str, invoice: Invoice) -
 
         if not invoice.emissao:
             if 'DATA DE EMISSAO' in line:
-                invoice.emissao = lines[i+1]
+                invoice.emissao = lines[i + 1]
 
         if not invoice.mesref:
             if invoice.emissao:
@@ -45,21 +46,24 @@ def __read_format_1__(pdf_object: PDFReader, page_text: str, invoice: Invoice) -
             if 'TELEFONE/CONTRATO:' in line:
                 invoice.conta = line.split()
                 if len(invoice.conta) == 1:
-                    invoice.conta = lines[i+1]
-                
+                    invoice.conta = lines[i + 1]
+
                 elif len(invoice.conta) == 2:
                     invoice.conta = invoice.conta[-1]
-                
+
                 else:
-                    line = line + lines[i+1]
-                    invoice.conta = pdf_object.find_element(line, '[0-9]+-[0-9]+', regex=True)
-                
+                    line = line + lines[i + 1]
+                    invoice.conta = pdf_object.find_element(
+                        line, '[0-9]+-[0-9]+', regex=True)
+
                     if not invoice.conta:
-                        invoice.conta = pdf_object.find_element(line, '[0-9]{8}', regex=True)
-                    
+                        invoice.conta = pdf_object.find_element(
+                            line, '[0-9]{8}', regex=True)
+
                     if not invoice.conta:
-                        invoice.conta = pdf_object.find_element(line, '[0-9]{10}', regex=True)
-                    
+                        invoice.conta = pdf_object.find_element(
+                            line, '[0-9]{10}', regex=True)
+
                     if isinstance(invoice.conta, list):
                         invoice.conta = invoice.conta[0]
 
@@ -69,11 +73,12 @@ def __read_format_1__(pdf_object: PDFReader, page_text: str, invoice: Invoice) -
         if not invoice.fatura:
             if 'FATURA N' in line:
                 invoice.fatura = line.split()[-1].strip()
-                
+
         if not invoice.valor:
             if 'VALOR A PAGAR' in line:
-                line = line + "\n" + lines[i+1]
-                invoice.valor = pdf_object.find_element(line, '[0-9]+,[0-9]+', regex=True)
+                line = line + "\n" + lines[i + 1]
+                invoice.valor = pdf_object.find_element(
+                    line, '[0-9]+,[0-9]+', regex=True)
                 if isinstance(invoice.valor, list):
                     if len(invoice.valor) > 0:
                         invoice.valor = invoice.valor[0]
@@ -84,7 +89,7 @@ def __read_format_1__(pdf_object: PDFReader, page_text: str, invoice: Invoice) -
 
         if not invoice.ddd:
             if 'CODIGO DDD' in line:
-                invoice.ddd = lines[i+1]
+                invoice.ddd = lines[i + 1]
 
         # if not invoice.servicos:
         #     if '' in line:
@@ -93,7 +98,8 @@ def __read_format_1__(pdf_object: PDFReader, page_text: str, invoice: Invoice) -
     return True
 
 
-def __read_format_2__(pdf_object: PDFReader, page_text: str, invoice: Invoice) -> bool:
+def __read_format_2__(pdf_object: PDFReader, page_text: str,
+                      invoice: Invoice) -> bool:
     """
     This function is used to extract information from a PDF file.
 
@@ -146,11 +152,11 @@ def __read_format_2__(pdf_object: PDFReader, page_text: str, invoice: Invoice) -
 
         if not invoice.valor:
             if 'Valor a pagar' in line:
-                invoice.valor = lines[i+1]
+                invoice.valor = lines[i + 1]
 
         if not invoice.vencimento:
             if 'Data de Vencimento' in line:
-                invoice.vencimento = lines[i+1]
+                invoice.vencimento = lines[i + 1]
 
         # if not invoice.servicos:
         #     if '' in line:
@@ -159,7 +165,8 @@ def __read_format_2__(pdf_object: PDFReader, page_text: str, invoice: Invoice) -
     return True
 
 
-def __read_format_3__(pdf_object: PDFReader, page_text: str, invoice: Invoice) -> bool:
+def __read_format_3__(pdf_object: PDFReader, page_text: str,
+                      invoice: Invoice) -> bool:
     """
     This function is used to extract information from a PDF file.
 
@@ -184,7 +191,7 @@ def __read_format_3__(pdf_object: PDFReader, page_text: str, invoice: Invoice) -
 
         if not invoice.mesref:
             if 'FATURA DE' in line:
-                invoice.mesref = lines[i+2]
+                invoice.mesref = lines[i + 2]
                 invoice.mesref = dt.strptime(invoice.mesref, '%b/%Y')
                 invoice.mesref = invoice.mesref.strftime("%b-%Y")
 
@@ -198,11 +205,11 @@ def __read_format_3__(pdf_object: PDFReader, page_text: str, invoice: Invoice) -
 
         if not invoice.valor:
             if 'PAGAR (R$)' in line:
-                invoice.valor = lines[i+1]
+                invoice.valor = lines[i + 1]
 
         if not invoice.vencimento:
             if 'VENCIMENTO' in line:
-                invoice.vencimento = lines[i+2]
+                invoice.vencimento = lines[i + 2]
 
         # if not invoice.servicos:
         #     if '' in line:
@@ -232,7 +239,7 @@ def ler_boleto_oi(invoices_path):
         if not f.endswith('.pdf'):
             continue
 
-        print('\n'*2 + '='*90)
+        print('\n' * 2 + '=' * 90)
         print(f"Lendo o arquivo {f}...")
         obj_pdf = PDFReader(f, invoices_path)
         invoice = Invoice()
@@ -251,13 +258,13 @@ def ler_boleto_oi(invoices_path):
                            else pdf.page_count)
             all_pages_text = []
             for pag in range(total_pages):
-                print("Numero da página:", pag+1)
+                print("Numero da página:", pag + 1)
                 page: str = obj_pdf.get_text(pdf, pag)
-                
+
                 all_pages_text.append(page)
-            
+
             full_text = '\n'.join(all_pages_text)
-            
+
             if 'Contrato Agrupador:' in full_text:
                 __read_format_2__(obj_pdf, full_text, invoice)
 
@@ -265,10 +272,10 @@ def ler_boleto_oi(invoices_path):
                     'PLANO LOCAL' in full_text):
                 __read_format_1__(obj_pdf, full_text, invoice)
 
-            elif ('CHEGOU SUA FATURA DA OI' in full_text or 
+            elif ('CHEGOU SUA FATURA DA OI' in full_text or
                     'EMPRESAS' in full_text):
                 __read_format_3__(obj_pdf, full_text, invoice)
-                
+
             else:
                 print(full_text)
                 raise TypeError("Tipo de PDF não reconhecido, "

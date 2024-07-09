@@ -2,21 +2,16 @@ import os
 
 import _main_path
 
-try:
-    from datetime import datetime as dt
-    from datetime import timedelta as td
-    from os.path import join
-    from time import sleep
-    from zipfile import ZipFile
-    from selenium.common.exceptions import NoSuchElementException
+from datetime import datetime as dt
+from datetime import timedelta as td
+from os.path import join
+from time import sleep
+from zipfile import ZipFile
+from selenium.common.exceptions import NoSuchElementException
 
-    from Automations.Separador_faturas import invoices_split
-    from Objects.Obj_WebAutomation import (Driver, WebElement,
-                                           css_selector, xpath)
-except ModuleNotFoundError as mnfe:
-    os.system(f"pip install {mnfe.name}")
-    os.system(f"python \"{__file__}\"")
-    quit()
+from Automations.Separador_faturas import invoices_split
+from Objects.Obj_WebAutomation import (Driver, WebElement,
+                                        css_selector, xpath)
 
 _main_path.__loader__
 
@@ -71,7 +66,7 @@ def Download_Invoices(mesref: dt = None):
 
     driver.find_by_element(webdriver,
                            '//*[@id="txtSenha"]',
-                           wait=3).send_keys('8f6a82')
+                           wait=3).send_keys('29c785')
 
     driver.click_by_element(webdriver,
                             '//*[@id="btnLogar"]')
@@ -91,13 +86,16 @@ def Download_Invoices(mesref: dt = None):
 
     sleep(2)
     try:
-        driver.click_by_element(webdriver, f'//td/label[contains(text(), "{mesref}")]')
+        driver.click_by_element(
+            webdriver, f'//td/label[contains(text(), "{mesref}")]')
     except NoSuchElementException:
         print("\033[1;31mMês não registrado ou encontrado no SC\033[0m")
         return
 
     sleep(1)
-    driver.click_by_element(webdriver, '//*[@id="ContentPlaceHolder1_btnFiltrar"]')
+    driver.click_by_element(
+        webdriver,
+        '//*[@id="ContentPlaceHolder1_btnFiltrar"]')
 
     __wait_loading__(webdriver)
     sleep(1)

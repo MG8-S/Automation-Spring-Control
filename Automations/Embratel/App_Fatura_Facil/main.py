@@ -47,7 +47,7 @@ def get_folder_service(service, mesref: dt):
     if not os.path.exists(path):
         os.mkdir(path)
 
-    path = join(path, service)
+    path = join(path, service.replace("/", "_"))
 
     if not os.path.exists(path):
         os.mkdir(path)
@@ -60,7 +60,7 @@ def move_file(file, old_path, new_path, faturas, quit_funct: Application.kill):
     new_filename = [x for x in faturas if fat in x][0]
 
     old_path_file = join(old_path, file)
-    new_path_file = join(new_path, "FAT_"+new_filename+'.TXT')
+    new_path_file = join(new_path, "FAT_" + new_filename + '.TXT')
 
     if os.path.getsize(old_path_file) < 10:  # Arquivo Vazio
         print("Arquivo vazio ou corrompido, deletando arquivo do sistema")
@@ -102,7 +102,7 @@ def Download_Fat_Ebt(mesref: dt = dt.now()):
               'será utilizado os dados escritos dentro do script')
 
         login = "EOL3178674"
-        senha = "Embratel24"
+        senha = "E3081#127z"
         cnpj = "42283770000139"
         cliente = "Embratel"
 
@@ -191,7 +191,7 @@ def Download_Fat_Ebt(mesref: dt = dt.now()):
         items_txt = ' '.join(items_fat)
         num_faturas = re.findall('[0-9]*  [0-9]*-[0-9]*', items_txt)
 
-        print('Quant. faturas: ', faturas.item_count()-1)
+        print('Quant. faturas: ', faturas.item_count() - 1)
 
         for fat in num_faturas:
             print('Baixando a fatura', fat)

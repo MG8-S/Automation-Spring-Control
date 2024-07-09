@@ -7,6 +7,7 @@ from zipfile import ZipFile
 import _main_path
 from Objects.Obj_WebAutomation import *
 
+
 def mount_url(url_base: str, **kwargs) -> (str, list):
     """
     Monta a URL com os argumentos.
@@ -25,29 +26,29 @@ def mount_url(url_base: str, **kwargs) -> (str, list):
             args += "".join(f"&{key}={item_value}" for item_value in value)
         else:
             args += f"&{key}={value}"
-    
+
     args = args.removeprefix("&")
     return url_base + args, args.split("&")
 
-    
+
 def _validacao_url(webdriver, oi_url, url_args) -> None:
-        """
-        Validação de URL
+    """
+    Validação de URL
 
-        Args:
-            webdriver: The webdriver object.
-            oi_url: The URL to validate.
+    Args:
+        webdriver: The webdriver object.
+        oi_url: The URL to validate.
 
-        Returns:
-            None
-        """
-        # Validação de URL
-        while not all(arg in webdriver.current_url for arg in url_args):
-            # print([(arg, arg in webdriver.current_url) for arg in url_args])
-            sleep(5)
-            print("Aplicando filtros novamente...")
-            webdriver.get(oi_url)
-            
+    Returns:
+        None
+    """
+    # Validação de URL
+    while not all(arg in webdriver.current_url for arg in url_args):
+        # print([(arg, arg in webdriver.current_url) for arg in url_args])
+        sleep(5)
+        print("Aplicando filtros novamente...")
+        webdriver.get(oi_url)
+
 
 def _verify_download(download_folder) -> None:
     """
@@ -59,9 +60,10 @@ def _verify_download(download_folder) -> None:
     Returns:
         None: This function does not return anything. It prints a success message once the download is complete.
     """
-    while any((f.endswith(('.crdownload', '.tmp'))) for f in os.listdir(download_folder)):
+    while any((f.endswith(('.crdownload', '.tmp')))
+              for f in os.listdir(download_folder)):
         sleep(2)
-        
+
     print("Download realizado com sucesso!")
 
 
@@ -88,39 +90,49 @@ def down_det_oi(download_folder, init_date: dt, final_date: dt):
     safe_sites = ["https://portaloisolucoes.oi.com.br/"]
     webdriver = driver.new_driver(safe_sites=safe_sites)
 
-    webdriver.get('https://autenticacao.oi.com.br/nidp/saml2/sso?id=PortalOIContractCorp&sid=0&option=credential&sid=0')
+    webdriver.get(
+        'https://autenticacao.oi.com.br/nidp/saml2/sso?id=PortalOIContractCorp&sid=0&option=credential&sid=0')
 
-    driver.find_by_element(webdriver, '//*[@id="usernameinput"]', wait=3).send_keys("cpazini@springtelecomgroup.com")
-    driver.find_by_element(webdriver, '//*[@id="passwordinput"]', wait=3).send_keys("Icatu2024")
+    driver.find_by_element(
+        webdriver,
+        '//*[@id="usernameinput"]',
+        wait=3).send_keys("cpazini@springtelecomgroup.com")
+    driver.find_by_element(
+        webdriver,
+        '//*[@id="passwordinput"]',
+        wait=3).send_keys("Icatu2024")
     driver.click_by_element(webdriver, '//*[@id="loginButtonApp"]', wait=3)
 
     base_url = 'https://portaloisolucoes.oi.com.br/todas-as-contas?'
     limit = 30
     offset = 0
     # contract_id = '33776098'
-    payment_status = ['em_aberto', 'sem_status', 'pago', 'cancelado']
+
+    # Disponível: 'em_aberto', 'sem_status', 'pago', 'cancelado'
+    payment_status = ['em_aberto', 'sem_status', 'pago']
 
     document_type = [
         'Invoice',
         # 'InvoiceExtract',
         # 'AdjustedInvoice'
-        ]  # warning: Primeira letra maiúscula 
+    ]  # warning: Primeira letra maiúscula
 
     inicio = init_date.strftime("%Y-%m-%dT00:00:00.%fZ").replace(':', '%3A')
     fim = final_date.strftime("%Y-%m-%dT23:59:59.%fZ").replace(':', '%3A')
 
     oi_url, url_args = mount_url(
-        base_url, 
+        base_url,
         limit=limit,
-        offset = offset,
-        paymentStatus = payment_status,
-        documentType = document_type,
-        dueDateStart = inicio,
-        dueDateEnd = fim)
+        offset=offset,
+        paymentStatus=payment_status,
+        documentType=document_type,
+        dueDateStart=inicio,
+        dueDateEnd=fim)
 
     sleep(5)
+
     webdriver.get(oi_url)
-    
+    sleep(3)
     _validacao_url(webdriver, oi_url, url_args)
 
     next_page_btn = driver.find_by_element(
@@ -131,16 +143,17 @@ def down_det_oi(download_folder, init_date: dt, final_date: dt):
     while True:
         try:
             driver.click_by_element(webdriver,
-                                '//table/thead/tr/th/input[@type="checkbox"]',
-                                wait=20)
+                                    '//table/thead/tr/th/input[@type="checkbox"]',
+                                    wait=20)
 
         except Exception:
             sleep(5)
             driver.click_by_element(webdriver,
-                                '//table/thead/tr/th/input[@type="checkbox"]',
-                                wait=20)
+                                    '//table/thead/tr/th/input[@type="checkbox"]',
+                                    wait=20)
 
-        if 'disabled' not in webdriver.execute_script('return arguments[0].getAttributeNames()',next_page_btn):
+        if 'disabled' not in webdriver.execute_script(
+                'return arguments[0].getAttributeNames()', next_page_btn):
             next_page_btn.click()
             sleep(5)
         else:
@@ -160,13 +173,12 @@ def down_det_oi(download_folder, init_date: dt, final_date: dt):
     )
 
     driver.click_by_element(webdriver,
-                        '//button[text() = "Ver downloads"]',
-                        wait=10)
-
+                            '//button[text() = "Ver downloads"]',
+                            wait=10)
 
     file_down_xpath = ('//tr[1][td/a[@title="Baixar arquivo"]'
-                    ' and td[2][contains(text(), "CSV")]'
-                    ' and td[5]/p[text()="Disponível"]]/td/a')
+                       ' and td[2][contains(text(), "CSV")]'
+                       ' and td[5]/p[text()="Disponível"]]/td/a')
 
     i = 0
     tries = 10
@@ -178,7 +190,7 @@ def down_det_oi(download_folder, init_date: dt, final_date: dt):
             print("Arquivo concluído com sucesso")
             break
 
-        except:
+        except BaseException:
             if i < tries:
                 sleep(5)
                 i += 1
